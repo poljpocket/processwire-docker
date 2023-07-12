@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./build/processwire
+      args:
+        PW_VERSION: "${PW_VERSION:-3.0.210}"
+        USER_ID: "${USER_ID:-33}"
+    container_name: "processwire-web"
+    restart: "always"
+    ports:
+      - "8080:80"
+    links:
+      - database
+    volumes:
+      - ./site:/var/www/html/site:rw
+      - ./config/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./config/vhosts:/etc/apache2/sites-enabled:ro
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html
+  database:
+    image: mariadb:10.6
+    container_name: "processwire-database"
+    restart: "always"
+    volumes:
+      - ./data/mariadb:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: "processwire-phpmyadmin"
+    links:
+      - database
+    ports:
+      - "8081:80"
+    environment:
+      PMA_USER: docker
+      PMA_PASSWORD: docker
+      PMA_PORT: 3306
+      PMA_HOST: database
+    volumes:
+      - ./config/php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini:ro
