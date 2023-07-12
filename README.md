@@ -6,7 +6,7 @@ Not for production environments!
 
 Run `build.sh` to build the images.
 
-This will install an empty database into `data/mariadb` and install the empty site profile in `site`.
+This will install the empty site profile in `site`.
 
 ## First-time installation
 
@@ -19,3 +19,7 @@ Use `docker` for database name, user and password. Use `database` for database h
 ## Running ProcessWire
 
 Create and run containers for the composition with `docker compose up`
+
+ProcessWire runs at https://localhost:8080
+
+phpmyadmin runs at https://localhost:8081
