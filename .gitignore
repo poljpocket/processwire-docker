@@ -1,1 +1,8 @@
 /.idea
+
+/node_modules
+
+/site/assets/backups
+/site/assets/cache
+/site/assets/logs
+/site/assets/sessions
