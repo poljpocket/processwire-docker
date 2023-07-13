@@ -5,8 +5,8 @@ services:
     build:
       context: ./build/processwire
       args:
-        PW_VERSION: "${PW_VERSION:-3.0.210}"
-        USER_ID: "${USER_ID:-33}"
+        PW_VERSION: "${PW_VERSION}"
+        USER_ID: "${USER_ID}"
     container_name: "processwire-web"
     restart: "always"
     ports:
@@ -20,9 +20,11 @@ services:
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
-    image: mariadb:10.6
+    build:
+      context: ./build/mariadb
+      args:
+        USER_ID: "${USER_ID}"
     container_name: "processwire-database"
-    restart: "always"
     volumes:
       - ./data/mariadb:/var/lib/mysql:rw
     environment:
