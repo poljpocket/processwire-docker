@@ -12,7 +12,7 @@ This will install the empty site profile in `site`.
 
 Run the composition normally (see "Running ProcessWire" below)
 
-Head to https://localhost:8080 in a browser and complete the ProcessWire installation.
+Head to http://localhost:8080 in a browser and complete the ProcessWire installation.
 
 Use `docker` for database name, user and password. Use `database` for database host.
 
@@ -20,6 +20,6 @@ Use `docker` for database name, user and password. Use `database` for database h
 
 Create and run containers for the composition with `docker compose up`
 
-ProcessWire runs at https://localhost:8080
+ProcessWire runs at http://localhost:8080
 
-phpmyadmin runs at https://localhost:8081
+phpmyadmin runs at http://localhost:8081
