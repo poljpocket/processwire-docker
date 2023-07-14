@@ -7,7 +7,6 @@ services:
       args:
         PW_VERSION: "${PW_VERSION:-3.0.210}"
         USER_ID: "${USER_ID:-1000}"
-    container_name: "processwire-web"
     restart: "always"
     ports:
       - "8080:80"
@@ -24,7 +23,6 @@ services:
       context: ./build/mariadb
       args:
         USER_ID: "${USER_ID:-1000}"
-    container_name: "processwire-database"
     volumes:
       - ./data/mariadb:/var/lib/mysql:rw
     environment:
@@ -34,7 +32,6 @@ services:
       MYSQL_PASSWORD: docker
   phpmyadmin:
     image: phpmyadmin
-    container_name: "processwire-phpmyadmin"
     links:
       - database
     ports:
