@@ -9,7 +9,7 @@ services:
         USER_ID: "${USER_ID:-1000}"
     ports:
       - "8080:80"
-    links:
+    depends_on:
       - database
     volumes:
       - ./site:/var/www/html/site:rw
@@ -31,7 +31,7 @@ services:
       MYSQL_PASSWORD: docker
   phpmyadmin:
     image: phpmyadmin
-    links:
+    depends_on:
       - database
     ports:
       - "8081:80"
