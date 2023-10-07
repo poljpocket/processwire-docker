@@ -2,11 +2,10 @@
 
 Not for production environments!
 
-## Building the images
+## Configuration (.env file)
 
-Run `build.sh` to build the images.
-
-This will install the empty site profile in `site`.
+- PW_VERSION: the version of ProcessWire you want to run (has to exist as a tag in the [ProcessWire GitHub](https://github.com/processwire/processwire) repository).
+- WEB_USER_ID: the user ID to use for both web and database containers. This should be your host user ID (e.g. `id -u`) to ensure read&write access on the host.
 
 ## First-time installation
 
