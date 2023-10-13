@@ -11,6 +11,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install curl
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install zip
+RUN docker-php-ext-install opcache
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
