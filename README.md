@@ -1,4 +1,4 @@
-# Simple Docker Configuraton for ProcessWire
+# Simple Docker Composition for ProcessWire
 
 Not for production environments!
 
@@ -8,6 +8,8 @@ Not for production environments!
   the [ProcessWire GitHub](https://github.com/processwire/processwire) repository).
 - WEB_USER_ID: the user ID to use for both web and database containers. This should be your host user ID (e.g. `id -u`)
   to ensure read&write access on the host.
+
+You can refer to `.env-default` for a template for your `.env` file.
 
 ## First-time installation
 
@@ -21,14 +23,13 @@ Use `docker` for database name, user and password. Use `database` for database h
 
 Create and run containers for the composition with `docker compose up`
 
-ProcessWire runs at http://localhost:8080
-
-phpmyadmin runs at http://localhost:8081
+- ProcessWire runs at http://localhost:8080
+- phpmyadmin runs at http://localhost:8081
 
 ## Dumping the database for commits
 
-In the `dbdump.sh` file, set the `DB_CONTAINER_NAME` variable to the name of your database container.
-Running this script will dump the database into the `data` folder.
+In the `dbdump.sh` and `dbrestore.sh` files, set the `DB_CONTAINER` variable to the name or id of your database container.
 
-Whichever `.sql` files are in the `data` folder are executed
-in the database whenever the container starts up.
+With the database container running,
+- executing the `dbdump.sh` script will dump the database into `docker-dump.sql` in the `data` folder.
+- executing the `dbrestore.sh` script will restore the database from `docker-dump.sql` in the `data` folder.
