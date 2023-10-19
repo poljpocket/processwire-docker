@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     build:
-      context: ./build/processwire
+      context: ./build
       args:
         PW_VERSION: ${PW_VERSION}
         USER_ID: ${WEB_USER_ID}
@@ -18,12 +18,10 @@ services:
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
-    build:
-      context: ./build/mariadb
-      args:
-        USER_ID: ${WEB_USER_ID}
+    image: mariadb:10.6
     volumes:
-      - ./data/mariadb:/var/lib/mysql:rw
+      - ./data/:/docker-entrypoint-initdb.d:ro
+      - database:/var/lib/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: docker
@@ -42,3 +40,5 @@ services:
       PMA_HOST: database
     volumes:
       - ./config/php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini:ro
+volumes:
+  database:

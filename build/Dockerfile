@@ -21,7 +21,7 @@ RUN a2enmod rewrite headers
 
 # copy scripts
 WORKDIR /scripts
-COPY ./scripts .
+COPY scripts .
 RUN chmod +x *
 
 # adjust www-data user to reflect outside configuration

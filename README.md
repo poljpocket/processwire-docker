@@ -4,8 +4,10 @@ Not for production environments!
 
 ## Configuration (.env file)
 
-- PW_VERSION: the version of ProcessWire you want to run (has to exist as a tag in the [ProcessWire GitHub](https://github.com/processwire/processwire) repository).
-- WEB_USER_ID: the user ID to use for both web and database containers. This should be your host user ID (e.g. `id -u`) to ensure read&write access on the host.
+- PW_VERSION: the version of ProcessWire you want to run (has to exist as a tag in
+  the [ProcessWire GitHub](https://github.com/processwire/processwire) repository).
+- WEB_USER_ID: the user ID to use for both web and database containers. This should be your host user ID (e.g. `id -u`)
+  to ensure read&write access on the host.
 
 ## First-time installation
 
@@ -22,3 +24,11 @@ Create and run containers for the composition with `docker compose up`
 ProcessWire runs at http://localhost:8080
 
 phpmyadmin runs at http://localhost:8081
+
+## Dumping the database for commits
+
+In the `dbdump.sh` file, set the `DB_CONTAINER_NAME` variable to the name of your database container.
+Running this script will dump the database into the `data` folder.
+
+Whichever `.sql` files are in the `data` folder are executed
+in the database whenever the container starts up.
