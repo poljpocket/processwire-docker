@@ -20,7 +20,6 @@ services:
   database:
     image: mariadb:10.6
     volumes:
-      - ./data/:/docker-entrypoint-initdb.d:ro
       - database:/var/lib/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: root
