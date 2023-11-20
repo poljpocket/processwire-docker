@@ -8,7 +8,7 @@ DB_CONTAINER=_database_container_name_or_id_
 #DB_CONTAINER=$(docker ps --filter "name=database" --format {{.ID}} --filter status=running)
 
 # export the schema
-docker exec $DB_CONTAINER_NAME sh -c 'mariadb-dump --no-data -udocker -pdocker docker' > ./data/docker-dump.sql
+docker exec $DB_CONTAINER sh -c 'mariadb-dump --no-data -udocker -pdocker docker' > ./data/docker-dump.sql
 
 # add the data, ignoring caches
-docker exec $DB_CONTAINER_NAME sh -c 'mariadb-dump --no-create-info --ignore-table=docker.caches -udocker -pdocker docker' >> ./data/docker-dump.sql
+docker exec $DB_CONTAINER sh -c 'mariadb-dump --no-create-info --ignore-table=docker.caches -udocker -pdocker docker' >> ./data/docker-dump.sql
