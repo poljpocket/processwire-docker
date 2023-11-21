@@ -5,16 +5,14 @@ services:
     build:
       context: ./build
       args:
-        PW_VERSION: ${PW_VERSION}
-        USER_ID: ${WEB_USER_ID}
+        PROCESSWIRE_VERSION: ${PW_VERSION}
+        WWWDATA_USER_ID: ${WEB_USER_ID}
     ports:
       - "8080:80"
     depends_on:
       - database
     volumes:
       - ./site:/var/www/html/site:rw
-      - ./config/php.ini:/usr/local/etc/php/php.ini:ro
-      - ./config/vhosts:/etc/apache2/sites-enabled:ro
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
@@ -37,7 +35,5 @@ services:
       PMA_PASSWORD: docker
       PMA_PORT: 3306
       PMA_HOST: database
-    volumes:
-      - ./config/php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini:ro
 volumes:
   database:

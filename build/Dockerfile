@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 # system updates
 RUN apt-get -y update
@@ -19,18 +19,28 @@ RUN docker-php-ext-install gd
 # enable some Apache modules
 RUN a2enmod rewrite headers
 
+# copy over configuration files
+COPY config/php.ini /usr/local/etc/php/
+COPY config/default.conf /etc/apache2/sites-enabled/
+
 # copy scripts
 WORKDIR /scripts
 COPY scripts .
 RUN chmod +x *
 
 # adjust www-data user to reflect outside configuration
-ARG USER_ID
-RUN usermod -u $USER_ID www-data
+ARG WWWDATA_USER_ID
+RUN usermod -u $WWWDATA_USER_ID www-data
+
+# expose volume for site folder
+VOLUME /var/www/html/site
 
 # prepare ProcessWire
-ARG PW_VERSION
+ARG PROCESSWIRE_VERSION
 WORKDIR /var/www/html
-RUN /scripts/install.sh $PW_VERSION
+RUN /scripts/install.sh $PROCESSWIRE_VERSION
 
-ENTRYPOINT /scripts/run.sh
+# expose web port
+EXPOSE 80
+
+CMD ["/scripts/run.sh"]
