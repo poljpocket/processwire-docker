@@ -26,10 +26,19 @@ Create and run containers for the composition with `docker compose up`
 - ProcessWire runs at http://localhost:8080
 - phpmyadmin runs at http://localhost:8081
 
-## Dumping the database for commits
+## Handling the database for commits
 
 In the `dbdump.sh` and `dbrestore.sh` files, set the `DB_CONTAINER` variable to the name or id of your database container.
 
 With the database container running,
-- executing the `dbdump.sh` script will dump the database into `docker-dump.sql` in the `data` folder.
-- executing the `dbrestore.sh` script will restore the database from `docker-dump.sql` in the `data` folder.
+- executing the `dbdump.sh` script will dump the database into `database.sql` in the `data` folder.
+- executing the `dbrestore.sh` script will restore the database from `database.sql` in the `data` folder.
+
+
+## Handling the assets for commits
+
+In the `assetsdump.sh` and `assetsrestore.sh` files, set the `WEB_CONTAINER` variable to the name or id of your web container.
+
+With the web container running,
+- executing the `assetsdump.sh` script will dump the assets into `files.tar.gz` in the `data` folder.
+- executing the `assetsrestore.sh` script will restore the assets from `files.tar.gz` in the `data` folder.

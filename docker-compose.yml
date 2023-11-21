@@ -13,6 +13,7 @@ services:
       - database
     volumes:
       - ./site:/var/www/html/site:rw
+      - assets:/var/www/html/site/assets:rw
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
@@ -37,3 +38,4 @@ services:
       PMA_HOST: database
 volumes:
   database:
+  assets:
