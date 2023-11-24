@@ -32,6 +32,9 @@ RUN chmod +x *
 ARG WWWDATA_USER_ID
 RUN usermod -u $WWWDATA_USER_ID www-data
 
+# expose volume for site folder
+VOLUME /var/www/html/site
+
 # prepare ProcessWire
 ARG PROCESSWIRE_VERSION
 WORKDIR /var/www/html

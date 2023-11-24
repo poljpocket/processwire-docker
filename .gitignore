@@ -1,10 +1,10 @@
-# IDE and build files
 /.idea
 /node_modules
 .env
 
-# files handled by docker volumes
-/site/assets
+/site/assets/backups
+/site/assets/cache
+/site/assets/logs
+/site/assets/sessions
 
-# production configuration files
 /site/config.php
