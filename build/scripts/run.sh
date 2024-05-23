@@ -8,4 +8,4 @@ else
   rm -f install.php
 fi;
 
-apache2-foreground
+exec apache2-foreground
