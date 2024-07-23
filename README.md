@@ -1,6 +1,9 @@
 # Simple Docker Composition for ProcessWire
 
-Not for production environments!
+## Important!
+
+* This repo uses https://github.com/poljpocket/processwire-docker-image which is not hosted on any registry. You need to download the repo and build the image yourself.
+* This repo does not apply any security measures. It is not meant for production environments!
 
 ## Configuration (.env file)
 

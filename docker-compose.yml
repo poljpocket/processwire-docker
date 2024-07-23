@@ -2,11 +2,7 @@ version: "3"
 
 services:
   web:
-    build:
-      context: ./build
-      args:
-        PROCESSWIRE_VERSION: ${PW_VERSION}
-        WWWDATA_USER_ID: ${WEB_USER_ID}
+    image: poljpocket/processwire-docker:3.0.229
     ports:
       - "8080:80"
     depends_on:
@@ -14,6 +10,7 @@ services:
     volumes:
       - ./site:/var/www/html/site:rw
     environment:
+      WEB_USER_ID: 1000
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
     image: mariadb:10.6
