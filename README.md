@@ -1,22 +1,17 @@
-# Simple Docker Composition for ProcessWire
+# Docker Composition for ProcessWire
 
-## Important!
-
-* This repo uses https://github.com/poljpocket/processwire-docker-image which is not hosted on any registry. You need to download the repo and build the image yourself.
-* This repo does not apply any security measures. It is not meant for production environments!
+Important: this repo does not apply any security measures. ___It is not meant for production environments!___
 
 ## Configuration (.env file)
 
-- PW_VERSION: the version of ProcessWire you want to run (has to exist as a tag in
-  the [ProcessWire GitHub](https://github.com/processwire/processwire) repository).
-- WEB_USER_ID: the user ID to use for both web and database containers. This should be your host user ID (e.g. `id -u`)
-  to ensure read&write access on the host.
-
-You can refer to `.env-default` for a template for your `.env` file.
+- ProcessWire version: Use the `image` line in `docker-compose.yml` to specify the version to use. Refer to https://hub.docker.com/r/poljpocket/processwire for available tags.
+- Web user ID: To allow files be edited locally and also altered by ProcessWire, you need to specify the `WEB_USER_ID` environment variable. You can get your local users' ID by running `id -u` in a terminal.
 
 ## First-time installation
 
-Run the composition normally (see "Running ProcessWire" below)
+Note: You can pre-populate the `site` folder with a site profile of your choice. If you don't, the default site profile will be installed automatically.
+
+Run the composition normally (see "Running ProcessWire" below).
 
 Head to http://localhost:8080 in a browser and complete the ProcessWire installation.
 
@@ -24,7 +19,7 @@ Use `docker` for database name, user and password. Use `database` for database h
 
 ## Running ProcessWire
 
-Create and run containers for the composition with `docker compose up`
+Create and run containers for the composition with `docker compose up -d`.
 
 - ProcessWire runs at http://localhost:8080
 - phpmyadmin runs at http://localhost:8081
@@ -36,3 +31,7 @@ In the `dbdump.sh` and `dbrestore.sh` files, set the `DB_CONTAINER` variable to 
 With the database container running,
 - executing the `dbdump.sh` script will dump the database into `database.sql` in the `data` folder.
 - executing the `dbrestore.sh` script will restore the database from `database.sql` in the `data` folder.
+
+## Large files
+
+Consider using git LFS for the `/site/assets/files` folder where all the uploads are located.
