@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    image: poljpocket/processwire-docker
+    image: poljpocket/processwire
     ports:
       - "8080:80"
     depends_on:
