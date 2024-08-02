@@ -11,6 +11,7 @@ services:
       - ./site:/var/www/html/site:rw
     environment:
       WEB_USER_ID: 1000
+      WEB_GROUP_ID: 1000
       APACHE_DOCUMENT_ROOT: /var/www/html
   database:
     image: mariadb:10.6
