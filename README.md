@@ -2,7 +2,7 @@
 
 Important: this repo does not apply any security measures. ___It is not meant for production environments!___
 
-## Configuration (.env file)
+## Configuration
 
 - ProcessWire version: Use the `image` line in `docker-compose.yml` to specify the version to use. Refer to https://hub.docker.com/r/poljpocket/processwire for available tags.
 - Web user ID: To allow files be edited locally and also altered by ProcessWire, you need to specify the `WEB_USER_ID` environment variable. You can get your local users' ID by running `id -u` in a terminal.
