@@ -2,7 +2,7 @@ services:
   web:
     image: poljpocket/processwire
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
     depends_on:
       - database
     volumes:
@@ -25,7 +25,7 @@ services:
     depends_on:
       - database
     ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
     environment:
       PMA_USER: docker
       PMA_PASSWORD: docker
