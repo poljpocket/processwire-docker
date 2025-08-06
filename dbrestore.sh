@@ -2,6 +2,7 @@
 
 set -e
 
+# the name or id of the database container for this composition
 DB_CONTAINER=$(docker compose ps -q | xargs docker inspect --format "{{.Name}}" | grep database)
 
 # empty the database first
