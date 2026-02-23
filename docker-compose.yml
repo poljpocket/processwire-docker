@@ -1,6 +1,6 @@
 services:
   web:
-    image: poljpocket/processwire
+    image: poljpocket/processwire:3.0.255
     ports:
       - "127.0.0.1:8080:80"
     depends_on:
