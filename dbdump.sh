@@ -9,4 +9,4 @@ DB_CONTAINER=$(docker compose ps -q | xargs docker inspect --format "{{.Name}}" 
 docker exec "$DB_CONTAINER" sh -c 'mariadb-dump --no-data -udocker -pdocker docker' > ./data/database.sql
 
 # add the data, ignoring caches
-docker exec "$DB_CONTAINER" sh -c 'mariadb-dump --no-create-info --ignore-table=docker.caches -udocker -pdocker docker' >> ./data/database.sql
+docker exec "$DB_CONTAINER" sh -c 'mariadb-dump --skip-extended-insert --no-create-info --ignore-table=docker.caches -udocker -pdocker docker' >> ./data/database.sql
